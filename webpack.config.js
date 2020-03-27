@@ -4,8 +4,12 @@ const htmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, "build"),
-    filename: "main.js"
+    filename: "main.js",
+    path: path.resolve(__dirname, "build")
+  },
+  devServer: {
+    contentBase: path.join(__dirname, "src"),
+    watchContentBase: true
   },
   plugins: [
     new htmlWebpackPlugin({
@@ -27,7 +31,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: true
+            }
+          }
+        ]
       },
       {
         test: /\.(png|jpe?g|gif)$/,

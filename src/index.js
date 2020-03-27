@@ -17,7 +17,7 @@ const imageComponent = image => {
   addComponent(img);
 };
 
-textComponent(["Hello", "World"]);
+textComponent(["Hello", "World "]);
 imageComponent(Picture);
 
 console.log(styles);
